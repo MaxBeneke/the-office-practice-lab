@@ -32,27 +32,14 @@ class Employee
         @@all
     end
 
-    attr_accessor :name, :salary 
+    attr_accessor :name, :salary, :role, :manager
     
-    def initialize(name, salary)
+    def initialize(name, salary, role, manager)
         @name = name
         @salary = salary
+        @role = role
+        @manager = manager
         self.class.all << self
-    end
-
-    def manager
-        finally_manager = ""
-        Role.all.each do |role|
-            role.employee == self
-          finally_manager =  role.manager
-        end
-        finally_manager
-    end
-
-    def role
-
-        Role.all.find{|role|role.employee == self}
-
     end
 
     def self.paid_over(number)
@@ -62,28 +49,25 @@ class Employee
     end
 
 
-def self.find_by_department(department_parameter)
+    def self.find_by_department(department_parameter)
 
-    Role.all.find{|role|
-    if role.manager.department == department_parameter 
+        Employee.all.find{|employee|
+        if employee.manager.department == department_parameter 
     
-    return role.employee
-    end}
+        return employee
+        end}
 
-end
+    end
 
-def self.search_by_role(role_parameter)
+    def self.search_by_role(role_parameter)
+        Employee.all.select{|employee| employee.role.name == role_parameter} 
+    end
 
-    Role.all.select{|role|
-  if  role.name == role_parameter 
+    def get_promoted(role_parameter)
+        self.salary += 1000
+        self.role = role_parameter
+    end
 
-return 
-
-} 
-
-
-
-end
 
 end
 
