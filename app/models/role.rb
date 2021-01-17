@@ -7,12 +7,13 @@ class Role
 
     attr_accessor :name,
     
-    def initialize(name)
+    def initialize(name, manager, employee)
         @name = name
+        @manager = manager
+        @employee = employee
         self.class.all << self
     end
 
     def employees
-        Employee.all.select
     end
 end
