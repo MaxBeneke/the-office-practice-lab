@@ -54,8 +54,9 @@ class Employee
         Employee.all.find{|employee|
         if employee.manager.department == department_parameter 
     
-        return employee
-        end}
+        employee
+        end
+        }
 
     end
 

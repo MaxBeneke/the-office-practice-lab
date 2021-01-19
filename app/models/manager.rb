@@ -21,6 +21,7 @@ class Manager
 
     def roles
         arr = []
+        
         self.employees.each{|employee| 
         arr << employee.role}
 

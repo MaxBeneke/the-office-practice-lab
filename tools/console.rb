@@ -23,4 +23,3 @@ employee4 = Employee.new("Stanley", 3000, role2, manager3) #Has 0 Managers, 1 Ro
 binding.pry
 0 #leave this here to ensure binding.pry isn't the last line
 
-### EMPLOYEES ARE THE CONNECTOR?????
